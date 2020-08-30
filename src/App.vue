@@ -6,7 +6,7 @@ v-app
     dark
     dense
   )
-    v-toolbar-title
+    v-toolbar-title.title
       | NCTU Timetable+
     v-spacer
     v-btn(
