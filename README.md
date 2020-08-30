@@ -1,4 +1,4 @@
-# nctu-timetable-plug
+# nctu-timetable-plus
 
 ## Project setup
 ```
