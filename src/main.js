@@ -1,13 +1,24 @@
-import Vue from "vue";
-import App from "./App.vue";
-import "./registerServiceWorker";
-import router from "./router";
-import store from "./store";
+import Vue from 'vue'
+import VueGtag from 'vue-gtag'
 
-Vue.config.productionTip = false;
+import App from './App.vue'
+import router from './router'
+import store from './store'
+import vuetify from './plugins/vuetify'
+
+import './registerServiceWorker'
+
+Vue.config.productionTip = false
+
+Vue.use(VueGtag, {
+  config: {
+    id: 'UA-134221599-2'
+  }
+})
 
 new Vue({
   router,
   store,
-  render: h => h(App)
-}).$mount("#app");
+  vuetify,
+  render: (h) => h(App)
+}).$mount('#app')

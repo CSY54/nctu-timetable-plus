@@ -1,4 +1,4 @@
-# nctu-course
+# nctu-timetable-plug
 
 ## Project setup
 ```

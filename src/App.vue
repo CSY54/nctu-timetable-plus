@@ -1,32 +1,32 @@
-<template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
-  </div>
+<template lang="pug">
+v-app
+  v-app-bar(
+    app
+    color="primary"
+    dark
+    dense
+  )
+    v-toolbar-title
+      | NCTU Timetable+
+    v-spacer
+    v-btn(
+      href="https://github.com/CSY54/nctu-timetable-plus"
+      target="_blank"
+      rel="noopener noreferrer"
+      text
+    )
+      v-icon(left small) mdi-github
+      | GitHub
+      v-icon(right small) mdi-open-in-new
+  v-main
+    router-view
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+export default {
+  name: 'App',
+  mounted() {
+    this.$store.dispatch('init')
+  }
 }
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+</script>
