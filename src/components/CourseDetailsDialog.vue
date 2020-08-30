@@ -1,7 +1,7 @@
 <template lang="pug">
 v-dialog(
   v-model="state"
-  max-width="400px"
+  max-width="350px"
 )
   v-card
     v-card-title.headline
@@ -10,15 +10,20 @@ v-dialog(
       ul
         li 當期課號：{{ course.id }}
         li 開課教師	：{{ course.teacher }}
-        li 選別：{{ course.type ? '必修' : '選修' }}
         li 上課時間、教室：{{ course.time }}
         li 學分：{{ course.credit }}
     v-card-actions
       v-spacer
       v-btn(
+        :href="`https://timetable.nctu.edu.tw/?r=main/crsoutline&Acy=109&Sem=1&CrsNo=${course.id}&lang=zh-tw`"
+        target="_blank"
+        text
+      )
+        | Information
+        v-icon(right) mdi-open-in-new
+      v-btn(
         @click="state = false"
         color="primary"
-        text
       )
         | Close
 

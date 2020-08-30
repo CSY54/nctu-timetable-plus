@@ -19,7 +19,7 @@ v-simple-table(
           v-chip(
             v-for="courseId in tableData[`${did}${tid}`]"
             :key="`${did}${tid}-${courseId}`"
-            :color="courses[courseId].type ? 'primary' : ''"
+            color="primary"
             :dark="highlightId === courseId"
             :outlined="highlightId !== courseId"
             @click="handleClick(courseId)"

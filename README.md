@@ -6,4 +6,4 @@ Project idea originated from [lys0829/NCTUPreTimetable](https://github.com/lys08
 
 ## TODO
 
-- 必修/選修問題
+- [x] 必修/選修問題

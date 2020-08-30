@@ -31,28 +31,30 @@ with open('data.json', 'w') as f:
 with open('data.json', 'r') as f:
     data = json.load(f)
 
+schema = {
+    'id': 'cos_id',
+    'name': 'cos_cname',
+    'credit': 'cos_credit',
+    'time': 'cos_time',
+    'teacher': 'teacher'
+}
+
 courses = {}
 for uuid in data:
     for courseType in data[uuid]:
-        '''
-        1: 主開
-        2: 輔開
-        '''
         if courseType not in ['1', '2']:
             continue
 
         for acySemId in data[uuid][courseType]:
             course = data[uuid][courseType][acySemId]
 
-            courses[course['cos_id']] = {
-                'id': course['cos_id'],
-                'name': course['cos_cname'],
-                'credit': course['cos_credit'],
-                'time': course['cos_time'],
-                'title': course['teacher'],
-                'type': course['cos_type'] == '必修',
-                'teacher': course['teacher'],
-            }
+            if course['cos_id'] in courses:
+                for f, t in schema.items():
+                    assert courses[course['cos_id']][f] == course[t]
+            else:
+                courses[course['cos_id']] = {}
+                for f, t in schema.items():
+                    courses[course['cos_id']][f] = course[t]
 
 with open('parsed.json', 'w') as f:
     json.dump(courses, f)
