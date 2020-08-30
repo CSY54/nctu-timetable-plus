@@ -7,7 +7,8 @@ v-app
     dense
   )
     v-toolbar-title.title
-      | NCTU Timetable+
+      | NCTU Timetable
+      sup +
     v-spacer
     v-btn(
       href="https://github.com/CSY54/nctu-timetable-plus"
