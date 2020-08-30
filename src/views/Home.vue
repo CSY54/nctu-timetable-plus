@@ -18,7 +18,13 @@ v-container.mb-4(fluid)
         v-card-title 已選課程
         SelectedList
         v-card-text
-          | 總計： {{ getCredit.toFixed(2) }} 學分
+          v-checkbox.mb-2(
+            v-model="addAll"
+            label="加總所有選取學分"
+            hide-details
+            dense
+          )
+          | 總計： {{ getCredit(addAll).toFixed(2) }} 學分
     v-col(cols="12" md="9")
       v-card.pb-2.overflow
         v-card-title 課表
@@ -59,7 +65,8 @@ export default {
   data: () => ({
     input: '',
     dialog: false,
-    detailCourseId: ''
+    detailCourseId: '',
+    addAll: true
   }),
   computed: {
     ...mapGetters(['getCredit'])

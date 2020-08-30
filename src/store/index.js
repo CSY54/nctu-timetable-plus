@@ -16,8 +16,9 @@ const getters = {
   getCourses: (state) => state.courses,
   getCourseById: (state) => (id) => state.courses[id],
   getSelectedCourses: (state) => state.selectedCourses,
-  getCredit: (state) => {
+  getCredit: (state) => (addAll) => {
     return state.selectedCourses
+      .filter(({ show }) => addAll || show)
       .map(({ id }) => state.courses[id].credit)
       .reduce((sum, cur) => sum + parseFloat(cur), 0.0)
   },
