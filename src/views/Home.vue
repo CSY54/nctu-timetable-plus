@@ -13,6 +13,7 @@ v-container.mb-4(fluid)
             @click:append-outer="addCourse"
             dense
             outlined
+            hide-details
           )
       v-card
         v-card-title 已選課程
