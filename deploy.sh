@@ -6,6 +6,8 @@ npm run build
 
 cd dist
 
+echo "timetable.csy54.tw" > CNAME
+
 git init
 
 git add -A
