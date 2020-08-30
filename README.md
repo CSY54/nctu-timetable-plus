@@ -1,24 +1,9 @@
-# nctu-timetable-plus
+# NCTU Timetable+
 
-## Project setup
-```
-npm install
-```
+A helper for you to choose courses.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Project idea originated from [lys0829/NCTUPreTimetable](https://github.com/lys0829/NCTUPreTimetable)
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## TODO
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- 必修/選修問題
