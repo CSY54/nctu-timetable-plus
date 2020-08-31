@@ -66,21 +66,14 @@ const actions = {
   async init({ commit }) {
     try {
       let data = JSON.parse(localStorage.getItem('courses'))
-      const version = localStorage.getItem('v')
-      localStorage.setItem('v', process.env.VUE_APP_VERSION)
 
-      if (
-        Object.keys(data).length === 0 ||
-        version !== process.env.VUE_APP_VERSION
-      ) {
+      if (Object.keys(data).length === 0) {
         throw new Error()
       }
 
       commit('setCourse', data)
     } catch (e) {
-      const data = await fetch(
-        `parsed.json?v=${process.env.VUE_APP_VERSION}`
-      ).then((res) => res.json())
+      const data = await fetch('parsed.json').then((res) => res.json())
       commit('setCourse', data)
     }
 
