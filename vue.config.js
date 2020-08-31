@@ -5,5 +5,11 @@ module.exports = {
   transpileDependencies: ['vuetify'],
   devServer: {
     disableHostCheck: true
+  },
+  pwa: {
+    name: 'NCTU Timetable+',
+    themeColor: '#1976d2',
+    msTileColor: '#1976d2',
+    assetsVersion: process.env.VUE_APP_VERSION
   }
 }
