@@ -6,6 +6,7 @@ v-autocomplete(
   :no-data-text="hint"
   @keyup.native.enter="submit"
   @click:append-outer="submit"
+  @focus="setSuggestion()"
   label="課程代號/課程名稱/授課教師"
   placeholder="例：0311、微積分..."
   prepend-icon="mdi-magnify"
@@ -15,9 +16,9 @@ v-autocomplete(
   outlined
   clearable
   no-filter
+  hide-details
   hide-selected
   auto-select-first
-  @focus="setSuggestion()"
 )
   template(v-slot:item="{ item }")
     CourseItem(:id="item.id")
