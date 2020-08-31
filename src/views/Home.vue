@@ -6,15 +6,7 @@ v-container.mb-4(fluid)
       v-card
         v-card-title 選課
         v-card-text
-          v-text-field(
-            v-model="input"
-            label="課程代號"
-            append-outer-icon="mdi-plus"
-            @click:append-outer="addCourse"
-            dense
-            outlined
-            hide-details
-          )
+          SearchField
       v-card
         v-card-title 已選課程
         SelectedList
@@ -52,6 +44,7 @@ v-container.mb-4(fluid)
 import { mapGetters } from 'vuex'
 
 import Disclaimer from '@/components/Disclaimer'
+import SearchField from '@/components/SearchField'
 import SelectedList from '@/components/SelectedList'
 import TimeTable from '@/components/TimeTable'
 import CourseDetailsDialog from '@/components/CourseDetailsDialog'
@@ -59,12 +52,12 @@ import CourseDetailsDialog from '@/components/CourseDetailsDialog'
 export default {
   components: {
     Disclaimer,
+    SearchField,
     SelectedList,
     TimeTable,
     CourseDetailsDialog
   },
   data: () => ({
-    input: '',
     dialog: false,
     detailCourseId: '',
     addAll: true
@@ -73,10 +66,6 @@ export default {
     ...mapGetters(['getCredit'])
   },
   methods: {
-    addCourse() {
-      this.$store.dispatch('addCourse', this.input)
-      this.input = ''
-    },
     showDetails(courseId) {
       this.detailCourseId = courseId
       this.dialog = true

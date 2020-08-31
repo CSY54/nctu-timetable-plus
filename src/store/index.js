@@ -22,7 +22,22 @@ const getters = {
       .map(({ id }) => state.courses[id].credit)
       .reduce((sum, cur) => sum + parseFloat(cur), 0.0)
   },
-  getHighlightCourseId: (state) => state.highlightCourseId
+  getHighlightCourseId: (state) => state.highlightCourseId,
+  searchCourse: (state) => (keyword) => {
+    if (!keyword) {
+      return []
+    }
+
+    const re = new RegExp(keyword, 'ui')
+    return Object.values(state.courses)
+      .filter(
+        (course) =>
+          course.id.match(re) ||
+          course.teacher.match(re) ||
+          course.name.match(re)
+      )
+      .slice(0, 10)
+  }
 }
 
 const mutations = {
