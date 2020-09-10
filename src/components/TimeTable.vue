@@ -9,13 +9,17 @@ v-simple-table(
       tr.mb-2
         th 時段
         th(v-for="{ did, day } in days" :key="did") {{ day }}
-        th(v-if="$vuetify.breakpoint.smAndDown") 時段
+        th(v-show="$vuetify.breakpoint.smAndDown") 時段
     tbody
       tr(v-for="[tid, interval] in Object.entries(times)" :key="tid")
         td
           span {{ tid }}
           span {{ interval }}
-        td(v-for="{ did } in days" :key="`${did}${tid}`")
+        td(
+          v-for="{ did } in days"
+          :key="`${did}${tid}`"
+          :class="{ conflict: (tableData[`${did}${tid}`] || []).length > 1 }"
+        )
           v-chip(
             v-for="courseId in tableData[`${did}${tid}`]"
             :key="`${did}${tid}-${courseId}`"
@@ -26,7 +30,7 @@ v-simple-table(
             small
           )
             | {{ courses[courseId].name }}
-        td(v-if="$vuetify.breakpoint.smAndDown")
+        td(v-show="$vuetify.breakpoint.smAndDown")
           span {{ tid }}
           span {{ interval }}
 </template>
@@ -140,5 +144,10 @@ td:last-child {
 td:first-child span:first-child,
 td:last-child span:first-child {
   display: block;
+}
+
+td.conflict {
+  border-bottom: thin solid rgba(255, 0, 0, 0.3) !important;
+  border-top: thin solid rgba(255, 0, 0, 0.3) !important;
 }
 </style>
